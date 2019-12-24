@@ -167,4 +167,37 @@ return(
 &lt;/div&gt;
 )
 </code></pre>
+<p><strong>METHOD as props</strong></p>
+<p>communicate child component with parent component</p>
+<pre><code>import  React, { Component } from  'react'
+export  class  Category  extends  Component {
+constructor(props) {
+super(props)
+this.state = {
+    parentName:  'Parent'
+}
+this.greetParent = this.greetParent.bind(this);  //binding method with props
+}
+greetParent = () =&gt; {
+    alert(`Hello ${this.state.parentName}`);
+}
+render() {
+    return (&lt;div&gt;
+	&lt;Childcomponent greetHandler={this.greetParent}&gt;
+&lt;/div&gt;)
+   }
+}
+export  default  Category
+</code></pre>
+<p>Child component</p>
+<pre><code>import  React  from  'react'
+function  Childcomponent(props) {
+return (
+&lt;div&gt;
+&lt;button onClick={props.greetHandler}&gt;Click Here&lt;/button&gt;
+&lt;/div&gt;
+)
+}
+export  default  Childcomponent
+</code></pre>
 
